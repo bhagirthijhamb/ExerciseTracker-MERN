@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./utils/db');
+const userRoutes = require('./routes/userRoutes')
 
 dotenv.config();  
 connectDB();
@@ -11,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
-// require('./routes/userRoutes')(app);
+require('./routes/userRoutes')(app);
 // require('./routes/exerciseRoutes')(app);
 
 // app.use(errorHandlingMiddleware.notFound);
