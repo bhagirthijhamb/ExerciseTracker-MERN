@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./utils/db');
 const userRoutes = require('./routes/userRoutes')
+const errorHandlingMiddleware = require('./middlewares/errorHandleMiddleware');
 
 dotenv.config();  
 connectDB();
@@ -15,8 +16,8 @@ app.use(morgan('dev'));
 require('./routes/userRoutes')(app);
 // require('./routes/exerciseRoutes')(app);
 
-// app.use(errorHandlingMiddleware.notFound);
-// app.use(errorHandlingMiddleware.errorHandler);
+app.use(errorHandlingMiddleware.notFound);
+app.use(errorHandlingMiddleware.errorHandler);
 
 // Server setup
 const PORT = process.env.PORT || 3090;
