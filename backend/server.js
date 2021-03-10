@@ -2,7 +2,6 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./utils/db');
-const userRoutes = require('./routes/userRoutes')
 const errorHandlingMiddleware = require('./middlewares/errorHandleMiddleware');
 
 dotenv.config();  

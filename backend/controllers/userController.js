@@ -15,6 +15,14 @@ exports.signup = async (req, res, next) => {
     return res.status(422).json(errors);
   }
   try {
+    // See if a user with the given email exists
+    const existingUser = await User.findOne({ email: email });
+
+    // If a user with provided email already exists, return an error
+    if(existingUser){
+      return res.status(422).send({ error: 'Email already taken' })
+    }
+
     const user = new User({
       name,
       email,
@@ -26,6 +34,15 @@ exports.signup = async (req, res, next) => {
     res.json({ token: tokenForUser(newUser) })
   } catch(error){
     console.log(error);
+    next(error);
+  }
+}
+
+exports.getUsers = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch(error){
     next(error);
   }
 }
