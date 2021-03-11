@@ -46,3 +46,15 @@ exports.getUsers = async (req, res, next) => {
     next(error);
   }
 }
+
+exports.signin = (req, res, next) => {
+  try {
+    // User has already has their email and password auth'd from passport
+    // We just need to give them a token
+
+    // req.user has value of user that was addded to it by done() callback of passsport
+    res.send({ token: tokenForUser(req.user)});
+  } catch (error){
+    next(error);
+  }
+}
