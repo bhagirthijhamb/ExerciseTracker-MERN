@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 require('./routes/userRoutes')(app);
-// require('./routes/exerciseRoutes')(app);
+require('./routes/exerciseRoutes')(app);
 
 app.use(errorHandlingMiddleware.notFound);
 app.use(errorHandlingMiddleware.errorHandler);
