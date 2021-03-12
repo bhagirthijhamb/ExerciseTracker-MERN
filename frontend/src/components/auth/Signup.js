@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from './../../actions';
 
 class Signup extends Component {
   onSubmit = (formProps) => {
     console.log(formProps);
+    this.props.signup(formProps);
   }
 
   render(){
@@ -24,4 +28,12 @@ class Signup extends Component {
   }
 }
 
-export default reduxForm({ form: 'signup'})(Signup);
+// export default reduxForm({ form: 'signup'})(Signup);
+
+// compose allows us to apply multiple HO Components to a single component with a much more attrative syntax.
+export default compose(
+  // list out all the HO components that you want to be applied to Signup
+  connect(null, actions),
+  reduxForm({ form: 'signup' })
+)(Signup);
+
