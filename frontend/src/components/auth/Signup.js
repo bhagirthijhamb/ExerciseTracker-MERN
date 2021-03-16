@@ -15,6 +15,10 @@ class Signup extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <fieldset>
+          <label>Name</label>
+          <Field name="name" type="text" component="input" autoComplete="none" />
+        </fieldset>
+        <fieldset>
           <label>Email</label>
           <Field name="email" type="text" component="input" autoComplete="none" />
         </fieldset>
