@@ -8,8 +8,10 @@ const tokenForUser = (user) => {
 }
 
 exports.signup = async (req, res, next) => {
+  console.log('req.body', req.body);
   const { name, email, password } = req.body;
   const { errors, valid } = validateSignupData(req.body);
+  console.log(errors, valid);
 
   if(!valid){
     return res.status(422).json(errors);
@@ -20,7 +22,7 @@ exports.signup = async (req, res, next) => {
 
     // If a user with provided email already exists, return an error
     if(existingUser){
-      return res.status(422).send({ error: 'Email already taken' })
+      return res.status(422).send({ error: 'Email already in use' })
     }
 
     const user = new User({
