@@ -33,10 +33,16 @@ class ExerciseList extends Component {
   }
     
   render(){
+    const { loading, exercises } = this.props.exercise;
+    console.log(loading);
+
     // if(this.props.exercise){
     //   console.log(this.props.exercise.exercises);
     // }
-    return (
+
+    const exerciseMarkup = loading ? (
+      <h3>...Loading</h3>
+    ) : (
       <div>
         <h3>Logged Exercises</h3>
         <table className="table">
@@ -53,6 +59,12 @@ class ExerciseList extends Component {
             {this.exerciseList()}
           </tbody>
         </table>
+      </div>
+    )
+
+    return (
+      <div>
+        {exerciseMarkup}
       </div>
     )
   }
