@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR } from '../types';
+import { AUTH_USER, AUTH_ERROR, LOADING_USERS, GET_USERS } from '../types';
 
 // we are not trying to chain up to a promise just yet
 // we are just calling the signup action creator and seeing if we can signup successfully
@@ -31,5 +31,17 @@ export const signup = (formProps, callback) => async dispatch => {
   catch (error){
     console.log(error.response.data);
     // dispatch({ type: AUTH_ERROR, payload: 'Email in use' });
+  }
+}
+
+export const getUsers = () => async dispatch => {
+  try {
+    dispatch({ type: LOADING_USERS })
+    const response = await axios.get('http://localhost:3090/users');
+    console.log(response);
+    dispatch({ type: GET_USERS, payload: response.data })
+    dispatch({ type: LOADING_USERS })
+  } catch(error){
+    console.log(error.response.data)
   }
 }

@@ -11,6 +11,7 @@ import App from './components/App';
 import Welcome from './components/Welcome';
 import Signup from './components/auth/Signup';
 import ExerciseList from './components/ExerciseList';
+import CreateExercise from './components/CreateExercise';
 import reducers from './redux/reducers';
 
 const store = createStore(
@@ -29,6 +30,7 @@ ReactDOM.render(
         <Route path="/" exact component={Welcome} />
         <Route path="/signup" component={Signup} />
         <Route path='/exercises' component={ExerciseList} />
+        <Route path='/createExercise' component={CreateExercise} />
       </App>
     </BrowserRouter>
   </Provider>, document.querySelector('#root'));

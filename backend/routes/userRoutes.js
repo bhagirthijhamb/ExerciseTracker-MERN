@@ -10,7 +10,8 @@ module.exports = (app) => {
   //   res.send('Hare Krishna')
   // })
 
-  app.get('/users', requireAuth, userController.getUsers);
+  // app.get('/users', requireAuth, userController.getUsers);
+  app.get('/users', userController.getUsers);
   app.post('/users/signin', requireSignin, userController.signin);
   app.post('/users/signup', userController.signup);
 }
