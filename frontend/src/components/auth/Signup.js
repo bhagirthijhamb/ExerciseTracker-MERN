@@ -15,7 +15,7 @@ class Signup extends Component {
     // console.log(formProps);
     this.props.signup(formProps, () => {
       // send the user to the feature route
-      this.props.history.push('/feature');
+      this.props.history.push('/exercises');
     });
   }
 
