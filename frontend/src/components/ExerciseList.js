@@ -7,6 +7,13 @@ const Exercise = props => {
   return (
     <tr>
       <td>{props.exercise.username}</td>
+      <td>{props.exercise.description}</td>
+      <td>{props.exercise.duration}</td>
+      <td>{props.exercise.date.substring(0, 10)}</td>
+      <td>
+        <Link>edit</Link> | {" "}
+        <a href="#">delete</a>
+      </td>
     </tr>
   )
 }
@@ -17,15 +24,18 @@ class ExerciseList extends Component {
     this.props.getExercises();
   }
   
-  // exerciseList(){
+  exerciseList(){
+    return this.props.exercise.exercises.map(exercise => {
+      return <Exercise exercise={exercise} 
+        // deleteExercise={this.props.deleteExercise} 
+        key={exercise._id} />
+    })
+  }
     
+  render(){
+    // if(this.props.exercise){
+    //   console.log(this.props.exercise.exercises);
     // }
-    
-    render(){
-      if(this.props.exercise){
-    console.log(this.props.exercise.exercises);
-
-      }
     return (
       <div>
         <h3>Logged Exercises</h3>
@@ -40,7 +50,7 @@ class ExerciseList extends Component {
             </tr>
           </thead>
           <tbody>
-            {/* {this.exerciseList()} */}
+            {this.exerciseList()}
           </tbody>
         </table>
       </div>
