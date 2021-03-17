@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as exerciseActions from './../redux/actions/exerciseActions';
 
 const Exercise = props => {
   return (
@@ -9,7 +11,16 @@ const Exercise = props => {
   )
 }
 
-export default class ExerciseList extends Component {
+// export default class ExerciseList extends Component {
+class ExerciseList extends Component {
+  componentDidMount(){
+    const exercises = this.props.getExercises();
+  }
+
+  // exerciseList(){
+
+  // }
+
   render(){
     return (
       <div>
@@ -24,8 +35,14 @@ export default class ExerciseList extends Component {
               <th>Actions</th>
             </tr>
           </thead>
+          <tbody>
+            {/* {this.exerciseList()} */}
+          </tbody>
         </table>
       </div>
     )
   }
 }
+
+// export default ExerciseList;
+export default connect(null, exerciseActions)(ExerciseList);

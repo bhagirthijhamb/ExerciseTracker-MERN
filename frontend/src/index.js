@@ -26,7 +26,7 @@ ReactDOM.render(
       {/* <App /> */}
       <App>
         {/* <Welcome /> */}
-        <Route path="/" component={Welcome} />
+        <Route path="/" exact component={Welcome} />
         <Route path="/signup" component={Signup} />
         <Route path='/exercises' component={ExerciseList} />
       </App>
