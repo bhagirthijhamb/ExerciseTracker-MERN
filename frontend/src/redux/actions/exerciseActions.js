@@ -4,10 +4,11 @@ import { LOADING_DATA, GET_EXERCISES } from '../types';
 
 export const getExercises = () => async(dispatch) => {
   try {
-    dispatch({ type: LOADING_DATA })
+    // dispatch({ type: LOADING_DATA })
     const response = await axios.get('http://localhost:3090/exercises');
-    console.log(response);
+    // console.log(response.data);
+    dispatch({ type: GET_EXERCISES, payload: response.data })
   } catch (error){
-    // console.log(error.response.data);
+    console.log(error.response.data);
   }
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, AUTH_ERROR } from '../types';
 
 // we are not trying to chain up to a promise just yet
 // we are just calling the signup action creator and seeing if we can signup successfully

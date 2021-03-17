@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from './../../actions';
+import * as actions from '../../redux/actions/userActions';
 
 class Signup extends Component {
   // after the uer successfully signs up, we want to redirect the user to the Feature page

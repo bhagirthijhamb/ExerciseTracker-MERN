@@ -11,7 +11,7 @@ import App from './components/App';
 import Welcome from './components/Welcome';
 import Signup from './components/auth/Signup';
 import ExerciseList from './components/ExerciseList';
-import reducers from './reducers';
+import reducers from './redux/reducers';
 
 const store = createStore(
   reducers,

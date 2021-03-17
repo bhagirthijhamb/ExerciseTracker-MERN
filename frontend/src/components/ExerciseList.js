@@ -14,14 +14,18 @@ const Exercise = props => {
 // export default class ExerciseList extends Component {
 class ExerciseList extends Component {
   componentDidMount(){
-    const exercises = this.props.getExercises();
+    this.props.getExercises();
   }
-
+  
   // exerciseList(){
+    
+    // }
+    
+    render(){
+      if(this.props.exercise){
+    console.log(this.props.exercise.exercises);
 
-  // }
-
-  render(){
+      }
     return (
       <div>
         <h3>Logged Exercises</h3>
@@ -44,5 +48,10 @@ class ExerciseList extends Component {
   }
 }
 
+function mapStateToProps (state){
+  console.log(state);
+  return { exercise: state.exercise }
+}
+
 // export default ExerciseList;
-export default connect(null, exerciseActions)(ExerciseList);
+export default connect(mapStateToProps, exerciseActions)(ExerciseList);
