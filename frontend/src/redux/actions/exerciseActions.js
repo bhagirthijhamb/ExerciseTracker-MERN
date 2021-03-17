@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOADING_DATA, GET_EXERCISES } from '../types';
+import { LOADING_DATA, GET_EXERCISES, DELETE_EXERCISE } from '../types';
 // import 
 
 export const getExercises = () => async(dispatch) => {
@@ -11,6 +11,16 @@ export const getExercises = () => async(dispatch) => {
     dispatch({ type: LOADING_DATA })
 
   } catch (error){
-    console.log(error.response.data);
+    console.log(error.response);
+  }
+}
+
+export const deleteExercise = (id) => async(dispatch) => {
+  try {
+    const response = await axios.delete('http://localhost:3090/exercises/delete/'+id);
+    console.log(response);
+    dispatch({ type: DELETE_EXERCISE, payload: id })
+  } catch(error){
+    console.log(error.response)
   }
 }

@@ -12,7 +12,7 @@ const Exercise = props => {
       <td>{props.exercise.date.substring(0, 10)}</td>
       <td>
         <Link>edit</Link> | {" "}
-        <a href="#">delete</a>
+        <a href="#" onClick={() => {props.deleteExercise(props.exercise._id)}}>delete</a>
       </td>
     </tr>
   )
@@ -27,7 +27,7 @@ class ExerciseList extends Component {
   exerciseList(){
     return this.props.exercise.exercises.map(exercise => {
       return <Exercise exercise={exercise} 
-        // deleteExercise={this.props.deleteExercise} 
+        deleteExercise={this.props.deleteExercise} 
         key={exercise._id} />
     })
   }
