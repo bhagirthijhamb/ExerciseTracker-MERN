@@ -5,9 +5,18 @@ import { connect } from 'react-redux';
 import * as actions from './../../actions';
 
 class Signup extends Component {
+  // after the uer successfully signs up, we want to redirect the user to the Feature page
+  // inside the onSubmit handler, where we are calling the signup action creator
+  // we pass a second argument (a callback) to the signup action creator that is called inside onSubmit.
+  // this callback is automaticalled called up after the user successfully signs up.
+  // Inside this callback function we do the navigation step that will send user to the feature route
+  // To automatically redirect our user we are going to get that props object to get the history prop that we get provided by redux router
   onSubmit = (formProps) => {
-    console.log(formProps);
-    this.props.signup(formProps);
+    // console.log(formProps);
+    this.props.signup(formProps, () => {
+      // send the user to the feature route
+      this.props.history.push('/feature');
+    });
   }
 
   render(){

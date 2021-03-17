@@ -17,11 +17,15 @@ import { AUTH_USER, AUTH_ERROR } from './types';
 
 // If the user tries to signup with the email that is already taken, an error is thrown from our backend server
 // To display errors like this in the frontend, when we are using async await syntax, we can catch the errors that are thrown  from our request by wrapping it with a try catch statement.
-export const signup = (formProps) => async dispatch => {
+export const signup = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post('http://localhost:3090/users/signup', formProps);
     console.log(response);
     dispatch({ type: AUTH_USER, payload: response.data.token });
+    // after we get back the response and 
+    // after we dispatch an action saying the user is now signed in
+    // we call that call back
+    callback()
   }
   // this code will run if anything goes wrong when we try to signup with a new account 
   catch (error){
