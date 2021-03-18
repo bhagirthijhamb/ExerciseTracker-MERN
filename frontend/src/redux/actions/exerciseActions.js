@@ -26,8 +26,9 @@ export const deleteExercise = (id) => async(dispatch) => {
 }
 
 export const createExercise = (exercise) => async (dispatch) => {
+  console.log(exercise);
   try {
-    const response = await axios.post('htp://localhost:5000/exercises/add', exercise);
+    const response = await axios.post('http://localhost:3090/exercises/add', exercise);
     console.log(response.data);
   } catch(error){
     console.log(error.response)

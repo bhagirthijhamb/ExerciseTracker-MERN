@@ -10,48 +10,50 @@ import { createExercise } from './../redux/actions/exerciseActions';
 // export default class CreateExercise extends Component {
 class CreateExercise extends Component {
   state = {
-    username: '',
-    description: '',
-    duration: 0,
-    date: new Date()
+    // username: '',
+    // description: '',
+    // duration: 0,
+    // date: new Date()
   }
   componentDidMount(){
     this.props.getUsers();
-    if(this.props.users.length > 0){
-      this.setState({ username: this.props.users[0].name })
-    }
+    // if(this.props.users.length > 0){
+    //   this.setState({ username: this.props.users[0].name })
+    // }
   }
 
-  onChangeUsername = (e) => {
-    this.setState({ username: e.target.value })
-  }
+  // onChangeUsername = (e) => {
+  //   this.setState({ username: e.target.value })
+  // }
 
-  onChangeDescription = (e) => {
-    this.setState({ description: e.target.value });
-  }
+  // onChangeDescription = (e) => {
+  //   this.setState({ description: e.target.value });
+  // }
 
-  onChangeDuration = (e) => {
-    this.setState({ duration : e.target.value });
-  }
+  // onChangeDuration = (e) => {
+  //   this.setState({ duration : e.target.value });
+  // }
 
-  onChangeDate = (date) => {
-    this.setState({ date: date })
-  }
+  // onChangeDate = (date) => {
+  //   this.setState({ date: date })
+  // }
 
-  onSubmit = (e) => {
-    e.preventDefault();
+  onSubmit = (formProps) => {
+    console.log(formProps);
 
-    const exercise = {
-      username: this.state.username,
-      description: this.state.description,
-      duration: this.state.duration,
-      date: this.state.date
-    }
+    // const exercise = {
+    //   username: this.state.username,
+    //   description: this.state.description,
+    //   duration: this.state.duration,
+    //   date: this.state.date
+    // }
+
+    this.props.createExercise(formProps);
     
   }
 
   render(){
-    console.log(this.props.users);
+    // console.log('users', this.props.users);
     const { handleSubmit } = this.props;
     return (
       <div>
@@ -60,9 +62,7 @@ class CreateExercise extends Component {
           <div className="form-group">
             <fieldset>
               <label>Username:</label>
-              <Field required className="form-control" 
-              // value={this.state.username} 
-              component="select" type="text">
+              <Field required value="user.email" name="username" className="form-control" component="select" type="text" minLength="3">
                 {this.props.users.map(user => {
                   return <option key={user.email} value={user.email}>{user.email}</option>
                 })}
@@ -101,12 +101,23 @@ class CreateExercise extends Component {
   }
 }
 
+// const mapStateToProps = state => (
+//   { users: state.user.users }
+// )
+
 function mapStateToProps(state){
   return { users: state.user.users }
 }
 
+const mapActionsToProps = { 
+  getUsers, 
+  createExercise 
+}
+
+
 // export default connect(mapStateToProps, userActions)(CreateExercise);
 export default compose (
-  connect(mapStateToProps, { getUsers, createExercise }),
+  // connect(mapStateToProps, { getUsers, createExercise }),
+  connect(mapStateToProps, mapActionsToProps ),
   reduxForm({ form: 'createExercise' })
 )(CreateExercise);
