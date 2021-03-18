@@ -42,6 +42,6 @@ export const getUsers = () => async dispatch => {
     dispatch({ type: GET_USERS, payload: response.data })
     dispatch({ type: LOADING_USERS })
   } catch(error){
-    console.log(error.response.data)
+    console.log(error.response)
   }
 }
