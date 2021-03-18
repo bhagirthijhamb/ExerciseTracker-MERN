@@ -24,3 +24,12 @@ export const deleteExercise = (id) => async(dispatch) => {
     console.log(error.response)
   }
 }
+
+export const createExercise = (exercise) => async (dispatch) => {
+  try {
+    const response = await axios.post('htp://localhost:5000/exercises/add', exercise);
+    console.log(response.data);
+  } catch(error){
+    console.log(error.response)
+  }
+}

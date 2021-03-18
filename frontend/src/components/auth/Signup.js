@@ -23,21 +23,30 @@ class Signup extends Component {
     const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
-        <fieldset>
-          <label>Name</label>
-          <Field name="name" type="text" component="input" autoComplete="none" required minLength="3" />
-        </fieldset>
-        <fieldset>
-          <label>Email</label>
-          <Field name="email" type="text" component="input" autoComplete="none" required />
-        </fieldset>
-        <fieldset>
-          <label>Password</label>
-          <Field name="password" type="passsword" component="input" autoComplete="none" required />
-        </fieldset>
-        {/* Print the Error message inside the form */}
-        <div style={{color:"red"}}>{this.props.errorMessage}</div>
-        <button>Sign Up!</button>
+        <h3>Sign Up</h3>
+        <div className="form-group">
+          <fieldset>
+            <label>Name:</label>
+            <Field className="form-control" name="name" type="text" component="input" autoComplete="none" required minLength="3" />
+          </fieldset>
+        </div>
+        <div className="form-group">
+          <fieldset>
+            <label>Email</label>
+            <Field className="form-control" name="email" type="text" component="input" autoComplete="none" required />
+          </fieldset>
+          </div>
+        <div className="form-group">
+          <fieldset>
+            <label>Password</label>
+            <Field className="form-control" name="password" type="passsword" component="input" autoComplete="none" required />
+          </fieldset>
+        </div>
+          {/* Print the Error message inside the form */}
+          <div style={{color:"red"}}>{this.props.errorMessage}</div>
+        <div className="form-group">
+          <button className="btn btn-primary">Sign Up!</button>
+        </div>
       </form>
     )
   }

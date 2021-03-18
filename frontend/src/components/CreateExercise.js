@@ -10,17 +10,51 @@ class CreateExercise extends Component {
     username: '',
     description: '',
     duration: 0,
-    date: newDate()
+    date: new Date()
   }
   componentDidMount(){
     this.props.getUsers();
-    this.setState({ username: this.props.users[0].username })
+    if(this.props.users.length > 0){
+      this.setState({ username: this.props.users[0].name })
+    }
+  }
+
+  onChangeUsername = (e) => {
+    this.setState({ username: e.target.value })
+  }
+
+  onChangeDescription = (e) => {
+    this.setState({ description: e.target.value });
+  }
+
+  onChangeDuration = (e) => {
+    this.setState({ duration : e.target.value });
+  }
+
+  onChangeDate = (date) => {
+    this.setState({ date: date })
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const exercise = {
+      username: this.state.username,
+      description: this.state.description,
+      duration: this.state.duration,
+      date: this.state.date
+    }
+    
   }
 
   render(){
+    console.log(this.props.users)
     return (
       <div>
-        Create Exercise
+        <h3>Create New Exercise Log</h3>
+        {/* <form onSubmit={handleSubmit(this.onSubmit)}>
+          fied
+        </form> */}
       </div>
     )
   }
