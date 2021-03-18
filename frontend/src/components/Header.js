@@ -5,13 +5,26 @@ class Header extends Component {
   render(){
     return(
       // <div>
-      <nav className="navbarStyle navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to='/'>Exercise Tracker</Link>
-        <Link to='/exercises'>Exercises</Link>
-        <Link to='/createExercise'>Create Exercise Log</Link>
-        <Link to='/signup'>Sign Up</Link>
-        <Link to='/signin'>Sign In</Link>
-        <Link to='/signout'>Sign Out</Link>
+      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <Link className="navbar-brand mb-0 h1" to='/'>Exercise Tracker</Link>
+
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link className="nav-link" to='/exercises'>Exercises</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to='/createExercise'>Create Exercise Log</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to='/signup'>Sign Up</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to='/signin'>Sign In</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to='/signout'>Sign Out</Link>
+          </li>
+        </ul>
       </nav>
       // </div>
     )
