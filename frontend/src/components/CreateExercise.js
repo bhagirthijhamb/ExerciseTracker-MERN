@@ -76,6 +76,25 @@ class CreateExercise extends Component {
               <Field name="description" type="text" component="input" autocomplete="none" className="form-control" required />
             </fieldset>
           </div>
+
+          <div className="form-group">
+            <fieldset>
+              <label>Duration:</label>
+              <Field name="duration" type="text" component="input" autocomplete="none" className="form-control" required />
+            </fieldset>
+          </div>
+
+          <div className="form-group">
+            <fieldset>
+              <label>Date:</label>
+              <Field name="date" type="date" component="input" autocomplete="none" className="form-control" required>
+              </Field>
+            </fieldset>
+          </div>
+
+          <div className="form-group">
+            <button className="btn btn-primary">Create Exercise Log!</button>
+          </div>
         </form>
       </div>
     )
