@@ -27,6 +27,7 @@ exports.addExercise = async(req, res, next) => {
 }
 
 exports.getOneExercise = async(req, res, next) => {
+  console.log(req.params.id)
   try {
     const exercise = await Exercise.findById(req.params.id);
     res.json(exercise);

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { getOneExercise } from './../../redux/actions/exerciseActions';
 
 class EditExercise extends Component {
   componentDidMount(){
-
+    console.log(this.props.match.params.id)
+    this.props.getOneExercise(this.props.match.params.id)
   }
 
   render(){
@@ -57,7 +59,15 @@ class EditExercise extends Component {
   }
 }
 
+const mapStateToProps = (state) => (
+  { }
+)
+
+const mapActionsToProps = {
+  getOneExercise
+}
+
 export default compose(
-  connect(),
+  connect(mapStateToProps, mapActionsToProps),
   reduxForm({ form: 'editExercise'})
 )(EditExercise);

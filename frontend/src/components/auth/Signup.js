@@ -44,6 +44,7 @@ class Signup extends Component {
         </div>
           {/* Print the Error message inside the form */}
           <div style={{color:"red"}}>{this.props.errorMessage}</div>
+          
         <div className="form-group">
           <button className="btn btn-primary">Sign Up!</button>
         </div>

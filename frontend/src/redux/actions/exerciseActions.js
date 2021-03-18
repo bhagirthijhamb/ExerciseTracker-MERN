@@ -17,7 +17,7 @@ export const getExercises = () => async(dispatch) => {
 
 export const getOneExercise = (id) => async(dispatch) => {
   try {
-    const response = axios.get('http://localhost:3090/exercises/id');
+    const response = await axios.get('http://localhost:3090/exercises/'+id);
     console.log(response);
   } catch (error){
     console.log(error.response);

@@ -32,7 +32,7 @@ ReactDOM.render(
         <Route path="/signup" component={Signup} />
         <Route path='/exercises' component={ExerciseList} />
         <Route path='/createExercise' component={CreateExercise} />
-        <Route path='/editExercise' component={EditExercise} />
+        <Route path='/editExercise/:id' component={EditExercise} />
       </App>
     </BrowserRouter>
   </Provider>, document.querySelector('#root'));
