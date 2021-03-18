@@ -4,56 +4,24 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getUsers } from './../redux/actions/userActions';
-import { createExercise } from './../redux/actions/exerciseActions';
+import { getUsers } from './../../redux/actions/userActions';
+import { createExercise } from './../../redux/actions/exerciseActions';
 
 // export default class CreateExercise extends Component {
 class CreateExercise extends Component {
-  state = {
-    // username: '',
-    // description: '',
-    // duration: 0,
-    // date: new Date()
-  }
   componentDidMount(){
     this.props.getUsers();
-    // if(this.props.users.length > 0){
-    //   this.setState({ username: this.props.users[0].name })
-    // }
   }
-
-  // onChangeUsername = (e) => {
-  //   this.setState({ username: e.target.value })
-  // }
-
-  // onChangeDescription = (e) => {
-  //   this.setState({ description: e.target.value });
-  // }
-
-  // onChangeDuration = (e) => {
-  //   this.setState({ duration : e.target.value });
-  // }
-
-  // onChangeDate = (date) => {
-  //   this.setState({ date: date })
-  // }
 
   onSubmit = (formProps) => {
     console.log(formProps);
-
-    // const exercise = {
-    //   username: this.state.username,
-    //   description: this.state.description,
-    //   duration: this.state.duration,
-    //   date: this.state.date
-    // }
-
-    this.props.createExercise(formProps);
-    
+    this.props.createExercise(formProps, () => {
+      this.props.history.push('/exercises');
+      // window.location = '/exercises';
+    });
   }
 
   render(){
-    // console.log('users', this.props.users);
     const { handleSubmit } = this.props;
     return (
       <div>

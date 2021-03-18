@@ -4,20 +4,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 
 import App from './components/App';
 import Welcome from './components/Welcome';
 import Signup from './components/auth/Signup';
-import ExerciseList from './components/ExerciseList';
-import CreateExercise from './components/CreateExercise';
+import ExerciseList from './components/Exercises/ExerciseList';
+import CreateExercise from './components/Exercises/CreateExercise';
+import EditExercise from './components/Exercises/EditExercise';
 import reducers from './redux/reducers';
 
 const store = createStore(
   reducers,
   {},
-  applyMiddleware(reduxThunk)
+  compose(applyMiddleware(reduxThunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 )
 
 ReactDOM.render(
@@ -31,6 +32,7 @@ ReactDOM.render(
         <Route path="/signup" component={Signup} />
         <Route path='/exercises' component={ExerciseList} />
         <Route path='/createExercise' component={CreateExercise} />
+        <Route path='/editExercise' component={EditExercise} />
       </App>
     </BrowserRouter>
   </Provider>, document.querySelector('#root'));

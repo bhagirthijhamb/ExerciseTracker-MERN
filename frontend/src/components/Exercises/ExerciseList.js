@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as exerciseActions from './../redux/actions/exerciseActions';
+import * as exerciseActions from './../../redux/actions/exerciseActions';
 
 const Exercise = props => {
   return (
@@ -11,7 +11,7 @@ const Exercise = props => {
       <td>{props.exercise.duration}</td>
       <td>{props.exercise.date.substring(0, 10)}</td>
       <td>
-        <Link to={'/edit/' + props.exercise._id}>edit</Link> | {" "}
+        <Link to={'/editExercise/' + props.exercise._id}>edit</Link> | {" "}
         <a href="#" onClick={() => {props.deleteExercise(props.exercise._id)}}>delete</a>
       </td>
     </tr>

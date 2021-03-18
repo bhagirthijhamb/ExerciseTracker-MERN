@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOADING_DATA, GET_EXERCISES, DELETE_EXERCISE } from '../types';
+import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE } from '../types';
 // import 
 
 export const getExercises = () => async(dispatch) => {
@@ -15,6 +15,15 @@ export const getExercises = () => async(dispatch) => {
   }
 }
 
+export const getOneExercise = (id) => async(dispatch) => {
+  try {
+    const response = axios.get('http://localhost:3090/exercises/id');
+    console.log(response);
+  } catch (error){
+    console.log(error.response);
+  }
+}
+
 export const deleteExercise = (id) => async(dispatch) => {
   try {
     const response = await axios.delete('http://localhost:3090/exercises/delete/'+id);
@@ -25,11 +34,13 @@ export const deleteExercise = (id) => async(dispatch) => {
   }
 }
 
-export const createExercise = (exercise) => async (dispatch) => {
+export const createExercise = (exercise, callback) => async (dispatch) => {
   console.log(exercise);
   try {
     const response = await axios.post('http://localhost:3090/exercises/add', exercise);
     console.log(response.data);
+    dispatch({ type: CREATE_EXERCISE, payload: response.data });
+    callback();
   } catch(error){
     console.log(error.response)
   }
