@@ -36,3 +36,6 @@ ReactDOM.render(
       </App>
     </BrowserRouter>
   </Provider>, document.querySelector('#root'));
+
+  // HO component is a noraml React component that is specifically made to help us reuse code inside our application
+  // COmponent (React Component) + HO Component (React Component) = Component (Additional functionality or data)('Enhanced' or 'Composed' Component) 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import * as exerciseActions from './../../redux/actions/exerciseActions';
+import requireAuth from './../auth/requireAuth';
 
 const Exercise = props => {
   return (
@@ -76,4 +78,8 @@ function mapStateToProps (state){
 }
 
 // export default ExerciseList;
-export default connect(mapStateToProps, exerciseActions)(ExerciseList);
+// export default connect(mapStateToProps, exerciseActions)(ExerciseList);
+
+export default compose(
+  connect(mapStateToProps,  exerciseActions ),
+)(requireAuth(ExerciseList));
