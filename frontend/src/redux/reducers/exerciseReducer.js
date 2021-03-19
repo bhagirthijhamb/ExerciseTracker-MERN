@@ -1,4 +1,4 @@
-import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE, GET_ONE_EXERCISE } from './../types';
+import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE, GET_ONE_EXERCISE, EDIT_EXERCISE } from './../types';
 
 const INITIAL_STATE = {
   loading: false,
@@ -15,9 +15,9 @@ export default function (state = INITIAL_STATE, action){
       return { ...state, exercises: action.payload }
     case GET_ONE_EXERCISE:
       return { ...state, exercise: action.payload }
+    case EDIT_EXERCISE:
+      return { ...state, exercise: action.payload }
     case CREATE_EXERCISE:
-      console.log(action.payload);
-      console.log(state.exercises)
       return { ...state, exercises: [ ...state.exercises, action.payload ] }
     case DELETE_EXERCISE:
       const index = state.exercises.findIndex(exercise => exercise._id === action.payload);

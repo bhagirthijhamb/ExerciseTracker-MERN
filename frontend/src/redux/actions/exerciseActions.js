@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE, GET_ONE_EXERCISE } from '../types';
+import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE, GET_ONE_EXERCISE, EDIT_EXERCISE } from '../types';
 // import 
 
 export const getExercises = () => async(dispatch) => {
@@ -44,5 +44,15 @@ export const createExercise = (exercise, callback) => async (dispatch) => {
     callback();
   } catch(error){
     console.log(error.response)
+  }
+}
+
+export const editExercise = (id, exercise, callback) => async (dispatch) => {
+  try {
+    const response = await axios.put('http://localhost:3090/exercises/edit/' + id, exercise )
+    dispatch({ type: EDIT_EXERCISE, payload: response.data })
+    callback()
+  } catch(error){
+    console.log(error.response);
   }
 }

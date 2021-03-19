@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getOneExercise } from './../../redux/actions/exerciseActions';
+import { getOneExercise, editExercise } from './../../redux/actions/exerciseActions';
 import { getUsers } from './../../redux/actions/userActions';
 
 class EditExercise extends Component {
@@ -11,13 +11,21 @@ class EditExercise extends Component {
     this.props.getOneExercise(this.props.match.params.id)
   }
 
+  onSubmit = (formProps) => {
+    this.props.editExercise(this.props.match.params.id, formProps, () => {
+      this.props.history.push('/exercises');
+    });
+
+  }
+
   render(){
     console.log(this.props.initialValues);
+    const { handleSubmit } = this.props;
     return(
       <div>
         <h3>Edit Exercise Log</h3>
         <form 
-        // onSubmit={handleSubmit(this.onSubmit)}
+        onSubmit={handleSubmit(this.onSubmit)}
         >
           <div className="form-group">
             <fieldset>
@@ -66,7 +74,7 @@ const mapStateToProps = (state) => (
 )
 
 const mapActionsToProps = {
-  getOneExercise, getUsers
+  getOneExercise, getUsers, editExercise
 }
 
 export default compose(
