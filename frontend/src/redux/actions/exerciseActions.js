@@ -8,7 +8,7 @@ export const getExercises = () => async(dispatch) => {
     const response = await axios.get('http://localhost:3090/exercises');
     // console.log(response.data);
     dispatch({ type: GET_EXERCISES, payload: response.data })
-    dispatch({ type: LOADING_DATA })
+    // dispatch({ type: LOADING_DATA })
 
   } catch (error){
     console.log(error.response);

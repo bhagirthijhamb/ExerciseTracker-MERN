@@ -20,8 +20,9 @@ import { AUTH_USER, AUTH_ERROR, LOADING_USERS, GET_USERS } from '../types';
 export const signup = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post('http://localhost:3090/users/signup', formProps);
-    console.log(response);
+    // console.log(response.data);
     dispatch({ type: AUTH_USER, payload: response.data.token });
+    localStorage.setItem('ETtoken', response.data.token);
     // after we get back the response and 
     // after we dispatch an action saying the user is now signed in
     // we call that call back

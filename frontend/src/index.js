@@ -17,7 +17,8 @@ import reducers from './redux/reducers';
 
 const store = createStore(
   reducers,
-  {},
+  // {},
+  { auth: { authenticated: localStorage.getItem('ETtoken') }},
   compose(applyMiddleware(reduxThunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 )
 
