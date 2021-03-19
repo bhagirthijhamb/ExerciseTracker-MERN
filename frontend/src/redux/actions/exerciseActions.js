@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE } from '../types';
+import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE, GET_ONE_EXERCISE } from '../types';
 // import 
 
 export const getExercises = () => async(dispatch) => {
@@ -19,6 +19,7 @@ export const getOneExercise = (id) => async(dispatch) => {
   try {
     const response = await axios.get('http://localhost:3090/exercises/'+id);
     console.log(response);
+    dispatch({ type: GET_ONE_EXERCISE, payload: response.data })
   } catch (error){
     console.log(error.response);
   }

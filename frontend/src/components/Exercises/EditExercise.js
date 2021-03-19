@@ -3,14 +3,16 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { getOneExercise } from './../../redux/actions/exerciseActions';
+import { getUsers } from './../../redux/actions/userActions';
 
 class EditExercise extends Component {
   componentDidMount(){
-    console.log(this.props.match.params.id)
+    this.props.getUsers();
     this.props.getOneExercise(this.props.match.params.id)
   }
 
   render(){
+    console.log(this.props.initialValues);
     return(
       <div>
         <h3>Edit Exercise Log</h3>
@@ -21,9 +23,9 @@ class EditExercise extends Component {
             <fieldset>
               <label>Username:</label>
               <Field required value="user.email" name="username" className="form-control" component="select" type="text" minLength="3">
-                {/* {this.props.users.map(user => {
+                {this.props.users.map(user => {
                   return <option key={user.email} value={user.email}>{user.email}</option>
-                })} */}
+                })}
               </Field>
             </fieldset>
           </div>
@@ -60,14 +62,15 @@ class EditExercise extends Component {
 }
 
 const mapStateToProps = (state) => (
-  { }
+  { initialValues: state.exercise.exercise, users: state.user.users }
 )
 
 const mapActionsToProps = {
-  getOneExercise
+  getOneExercise, getUsers
 }
 
 export default compose(
   connect(mapStateToProps, mapActionsToProps),
-  reduxForm({ form: 'editExercise'})
+  reduxForm(
+    { form: 'editExercise', enableReinitialize: true })
 )(EditExercise);

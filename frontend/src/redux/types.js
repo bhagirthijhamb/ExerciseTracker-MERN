@@ -6,6 +6,7 @@ export const GET_USERS = 'GET_USERS';
 
 export const LOADING_DATA = 'LOADING_DATA';
 export const GET_EXERCISES = 'GET_EXERCISES';
+export const GET_ONE_EXERCISE = 'GET_ONE_EXERCISE';
 export const CREATE_EXERCISE = 'CREATE_EXERCISE';
 export const DELETE_EXERCISE = 'DELETE_EXERCISE';
 export const EDIT_EXERCISE = 'EDIT_EXERCISE';

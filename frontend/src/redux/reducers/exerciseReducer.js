@@ -1,8 +1,9 @@
-import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE } from './../types';
+import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE, GET_ONE_EXERCISE } from './../types';
 
 const INITIAL_STATE = {
   loading: false,
-  exercises: []
+  exercises: [],
+  exercise: {}
 }
 
 export default function (state = INITIAL_STATE, action){
@@ -12,6 +13,8 @@ export default function (state = INITIAL_STATE, action){
     case GET_EXERCISES:
       // console.log(action.payload)
       return { ...state, exercises: action.payload }
+    case GET_ONE_EXERCISE:
+      return { ...state, exercise: action.payload }
     case CREATE_EXERCISE:
       console.log(action.payload);
       console.log(state.exercises)
