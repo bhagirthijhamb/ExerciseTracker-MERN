@@ -9,10 +9,10 @@ const INITIAL_STATE = {
 export default function (state = INITIAL_STATE, action){
   switch(action.type){
     case LOADING_DATA:
-      return { ...state, loading: !state.loading }
+      return { ...state, loading: true }
     case GET_EXERCISES:
       // console.log(action.payload)
-      return { ...state, exercises: action.payload }
+      return { ...state, exercises: action.payload, loading: false }
     case GET_ONE_EXERCISE:
       return { ...state, exercise: action.payload }
     case EDIT_EXERCISE:
