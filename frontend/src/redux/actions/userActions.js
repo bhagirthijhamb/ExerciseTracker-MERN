@@ -34,7 +34,7 @@ export const signup = (formProps, callback) => async dispatch => {
     console.log(response.data);
     setAuthorizationHeader(response.data.token);
     dispatch({ type: AUTH_USER, payload: response.data.token });
-    // dispatch(getUser());
+    dispatch(getUser());
     // after we get back the response and 
     // after we dispatch an action saying the user is now signed in
     // we call that call back

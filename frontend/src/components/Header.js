@@ -34,11 +34,13 @@ class Header extends Component {
       }
   }
   render(){
+    console.log(this.props.user.name)
     return(
       // <div>
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
         <Link className="navbar-brand mb-0 h1" to='/'>Exercise Tracker</Link>
         {this.renderLinks()}
+        <p>Welcome {this.props.user.name}</p>
       </nav>
       // </div>
     )
@@ -46,7 +48,10 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  return { authenticated: state.auth.authenticated }
+  return { 
+    authenticated: state.auth.authenticated,
+    user: state.user.user
+  }
 }
 
 export default connect(mapStateToProps)(Header);

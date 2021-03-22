@@ -5,8 +5,8 @@ import { LOADING_DATA, GET_EXERCISES, CREATE_EXERCISE, DELETE_EXERCISE, GET_ONE_
 export const getExercises = () => async(dispatch) => {
   try {
     dispatch({ type: LOADING_DATA })
+    axios.defaults.headers.common['authorization'] = localStorage.getItem('ETtoken');
     const response = await axios.get('http://localhost:3090/exercises');
-    // console.log(response.data);
     dispatch({ type: GET_EXERCISES, payload: response.data })
   } catch (error){
     console.log(error.response);
