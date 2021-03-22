@@ -14,6 +14,7 @@ export default function (state=INITIAL_STATE, action){
     case GET_USERS:
       return { ...state, users: action.payload, loading: false }
     case SET_USER:
+      console.log(action.payload);
       return { ...state, user: action.payload }
     default:
       return state

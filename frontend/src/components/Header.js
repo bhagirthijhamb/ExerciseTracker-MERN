@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getUser } from './../redux/actions/userActions';
 
 class Header extends Component {
+  componentDidMount(){
+    this.props.getUser()
+  }
   renderLinks () {
     if(this.props.authenticated){
       return (
@@ -15,6 +19,9 @@ class Header extends Component {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to='/signout'>Sign Out</Link>
+          </li>
+          <li>
+            <Link className="nav-link" to='/'>Welcome {this.props.user.name}{' '}!</Link>
           </li>
         </ul>
       )
@@ -40,7 +47,6 @@ class Header extends Component {
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
         <Link className="navbar-brand mb-0 h1" to='/'>Exercise Tracker</Link>
         {this.renderLinks()}
-        <p>Welcome {this.props.user.name}</p>
       </nav>
       // </div>
     )
@@ -54,4 +60,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { getUser })(Header);

@@ -3,8 +3,9 @@ import { AUTH_USER, AUTH_ERROR, LOADING_USERS, GET_USERS, LOADING_UI, SET_USER }
 
 export const getUser = () => async dispatch => {
   try {
+    axios.defaults.headers.common['authorization'] = localStorage.getItem('ETtoken');
     const response = await axios.get('http://localhost:3090/users/user');
-    console.log(response.data);
+    // console.log(response.data);
     dispatch({ type: SET_USER, payload: response.data });
   } catch(error){
     console.log(error)
