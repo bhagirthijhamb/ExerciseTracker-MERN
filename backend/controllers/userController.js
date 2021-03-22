@@ -8,10 +8,10 @@ const tokenForUser = (user) => {
 }
 
 exports.signup = async (req, res, next) => {
-  console.log('req.body', req.body);
+  // console.log('req.body', req.body);
   const { name, email, password } = req.body;
   const { errors, valid } = validateSignupData(req.body);
-  console.log(errors, valid);
+  // console.log(errors, valid);
 
   if(!valid){
     return res.status(422).json(errors);
@@ -57,6 +57,17 @@ exports.signin = async (req, res, next) => {
     // req.user has value of user that was addded to it by done() callback of passsport
     res.send({ token: tokenForUser(req.user)});
   } catch (error){
+    next(error);
+  }
+}
+
+exports.getUser = async (req, res, next) => {
+  console.log('req.user', req.user);
+  try {
+    const user = await User.findOne({ email: req.user.email });
+    console.log('user', user);
+    res.json(user);
+  } catch(error){
     next(error);
   }
 }

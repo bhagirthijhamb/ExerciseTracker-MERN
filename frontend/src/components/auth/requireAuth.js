@@ -28,6 +28,7 @@ export default (ChildComponent) => {
   }
 
   function mapStateToProps(state){
+    console.log(state.auth.authenticated);
     return { auth: state.auth.authenticated }
   }
 

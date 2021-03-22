@@ -3,6 +3,7 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 
 export const LOADING_USERS = 'LOADING_USERS';
 export const GET_USERS = 'GET_USERS';
+export const SET_USER = 'SET_USER';
 
 export const LOADING_DATA = 'LOADING_DATA';
 export const GET_EXERCISES = 'GET_EXERCISES';

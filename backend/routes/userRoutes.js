@@ -12,6 +12,7 @@ module.exports = (app) => {
 
   // app.get('/users', requireAuth, userController.getUsers);
   app.get('/users', userController.getUsers);
+  app.get('/users/user', requireAuth, userController.getUser);
   app.post('/users/signin', requireSignin, userController.signin);
   app.post('/users/signup', userController.signup);
 }

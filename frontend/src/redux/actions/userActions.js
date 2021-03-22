@@ -1,5 +1,15 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR, LOADING_USERS, GET_USERS } from '../types';
+import { AUTH_USER, AUTH_ERROR, LOADING_USERS, GET_USERS, LOADING_UI, SET_USER } from '../types';
+
+export const getUser = () => async dispatch => {
+  try {
+    const response = await axios.get('http://localhost:3090/users/user');
+    console.log(response.data);
+    dispatch({ type: SET_USER, payload: response.data });
+  } catch(error){
+    console.log(error)
+  }
+}
 
 // we are not trying to chain up to a promise just yet
 // we are just calling the signup action creator and seeing if we can signup successfully
@@ -19,10 +29,12 @@ import { AUTH_USER, AUTH_ERROR, LOADING_USERS, GET_USERS } from '../types';
 // To display errors like this in the frontend, when we are using async await syntax, we can catch the errors that are thrown  from our request by wrapping it with a try catch statement.
 export const signup = (formProps, callback) => async dispatch => {
   try {
+    dispatch({ type: LOADING_UI })
     const response = await axios.post('http://localhost:3090/users/signup', formProps);
-    // console.log(response.data);
+    console.log(response.data);
+    setAuthorizationHeader(response.data.token);
     dispatch({ type: AUTH_USER, payload: response.data.token });
-    localStorage.setItem('ETtoken', response.data.token);
+    // dispatch(getUser());
     // after we get back the response and 
     // after we dispatch an action saying the user is now signed in
     // we call that call back
@@ -60,6 +72,8 @@ export const getUsers = () => async dispatch => {
   }
 }
 
+
+
 // simple (not complex action creator where we get access to that dispatch function with redux-thunk
 // just because we do not expect this to have any need for asynchronous dispatch
 // in other words, we are not going to make any request inside of this action creator.
@@ -76,4 +90,9 @@ export const signout = () => {
     type: AUTH_USER,
     payload: ''
   }
+}
+
+export const setAuthorizationHeader = token => {
+  localStorage.setItem('ETtoken', token);
+  axios.defaults.headers.common['authorization'] = token;
 }
