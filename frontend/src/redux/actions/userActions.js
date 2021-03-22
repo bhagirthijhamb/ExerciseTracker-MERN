@@ -46,3 +46,21 @@ export const getUsers = () => async dispatch => {
     console.log(error.response)
   }
 }
+
+// simple (not complex action creator where we get access to that dispatch function with redux-thunk
+// just because we do not expect this to have any need for asynchronous dispatch
+// in other words, we are not going to make any request inside of this action creator.
+// so it will be a normal synchronous action creator.
+export const signout = () => {
+  // clear the local storeage of the 'ETtoken' property
+  localStorage.removeItem('ETtoken');
+
+  // return an action of type AUTH_USER (same type as we used for signinup the user)
+  // AUTH_USER all it does is flip the authenticated piece of state in our auth reducer
+  // here r/t setting the authenticated piece of state to some JSON token, we set it to an empty string.
+  // which essentialy mean- sign the user out by clearing the authenticated piece of state
+  return {
+    type: AUTH_USER,
+    payload: ''
+  }
+}
