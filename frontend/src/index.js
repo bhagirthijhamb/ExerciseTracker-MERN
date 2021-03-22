@@ -10,6 +10,7 @@ import reduxThunk from 'redux-thunk';
 import App from './components/App';
 import Welcome from './components/Welcome';
 import Signup from './components/auth/Signup';
+import Signout from './components/auth/Signout';
 import ExerciseList from './components/Exercises/ExerciseList';
 import CreateExercise from './components/Exercises/CreateExercise';
 import EditExercise from './components/Exercises/EditExercise';
@@ -31,6 +32,7 @@ ReactDOM.render(
         {/* <Welcome /> */}
         <Route path="/" exact component={Welcome} />
         <Route path="/signup" component={Signup} />
+        <Route path='/signout' component={Signout} />
         <Route path='/exercises' component={ExerciseList} />
         <Route path='/createExercise' component={CreateExercise} />
         <Route path='/editExercise/:id' component={EditExercise} />
