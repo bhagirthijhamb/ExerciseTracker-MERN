@@ -10,3 +10,8 @@ export const GET_ONE_EXERCISE = 'GET_ONE_EXERCISE';
 export const CREATE_EXERCISE = 'CREATE_EXERCISE';
 export const DELETE_EXERCISE = 'DELETE_EXERCISE';
 export const EDIT_EXERCISE = 'EDIT_EXERCISE';
+
+export const SET_ERRORS = 'SET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const LOADING_UI = 'LOADING_UI';
+export const STOP_LOADING_UI = 'STOP_LOADING_UI'

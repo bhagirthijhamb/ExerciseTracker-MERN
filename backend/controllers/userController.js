@@ -22,7 +22,7 @@ exports.signup = async (req, res, next) => {
 
     // If a user with provided email already exists, return an error
     if(existingUser){
-      return res.status(422).send({ error: 'Email already in use' })
+      return res.status(422).send({ message: 'Email already in use' })
     }
 
     const user = new User({

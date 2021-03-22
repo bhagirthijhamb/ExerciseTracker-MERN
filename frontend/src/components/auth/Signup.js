@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// Redux stuff
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -17,6 +18,12 @@ class Signup extends Component {
       // send the user to the feature route
       this.props.history.push('/exercises');
     });
+  }
+
+  renderErrors = () => {
+    if(this.props.errors){
+      
+    }
   }
 
   render(){
@@ -43,10 +50,11 @@ class Signup extends Component {
           </fieldset>
         </div>
           {/* Print the Error message inside the form */}
-          <div style={{color:"red"}}>{this.props.errorMessage}</div>
+          <div style={{color:"red"}}>{this.props.errors ? this.props.errors.email : null}</div>
+          <div style={{color:"red"}}>{this.props.errors ? this.props.errors.message : null}</div>
           
         <div className="form-group">
-          <button className="btn btn-primary">Sign Up!</button>
+          <button className="btn btn-primary mt-3">Sign Up!</button>
         </div>
       </form>
     )
@@ -54,7 +62,7 @@ class Signup extends Component {
 }
 
 function mapStateToProps (state){
-  return { errorMessage: state.auth.errorMessage };
+  return { errors: state.auth.errors };
 }
 
 // export default reduxForm({ form: 'signup'})(Signup);

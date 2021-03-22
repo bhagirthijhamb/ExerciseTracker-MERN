@@ -31,7 +31,7 @@ export const signup = (formProps, callback) => async dispatch => {
   // this code will run if anything goes wrong when we try to signup with a new account 
   catch (error){
     console.log(error.response.data);
-    // dispatch({ type: AUTH_ERROR, payload: 'Email in use' });
+    dispatch({ type: AUTH_ERROR, payload: error.response.data });
   }
 }
 
