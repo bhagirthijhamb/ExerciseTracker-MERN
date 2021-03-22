@@ -35,6 +35,24 @@ export const signup = (formProps, callback) => async dispatch => {
   }
 }
 
+export const signin = (formProps, callback) => async dispatch => {
+  try {
+    const response = await axios.post('http://localhost:3090/users/signin', formProps);
+    // console.log(response.data);
+    dispatch({ type: AUTH_USER, payload: response.data.token });
+    localStorage.setItem('ETtoken', response.data.token);
+    // after we get back the response and 
+    // after we dispatch an action saying the user is now signed in
+    // we call that call back
+    callback()
+  }
+  // this code will run if anything goes wrong when we try to signup with a new account 
+  catch (error){
+    console.log(error.response.data);
+    // dispatch({ type: AUTH_ERROR, payload: 'Email in use' });
+  }
+}
+
 export const getUsers = () => async dispatch => {
   try {
     dispatch({ type: LOADING_USERS })
