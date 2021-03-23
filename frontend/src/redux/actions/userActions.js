@@ -5,7 +5,8 @@ import { AUTH_USER, AUTH_ERROR, LOADING_USERS, GET_USERS, LOADING_UI, SET_USER }
 export const getUser = () => async dispatch => {
   try {
     axios.defaults.headers.common['authorization'] = localStorage.getItem('ETtoken');
-    const response = await axios.get('http://localhost:3090/users/user');
+    // const response = await axios.get('http://localhost:3090/users/user');
+    const response = await axios.get('/users/user');
     // console.log(response.data);
     dispatch({ type: SET_USER, payload: response.data });
   } catch(error){
@@ -32,7 +33,8 @@ export const getUser = () => async dispatch => {
 export const signup = (formProps, callback) => async dispatch => {
   try {
     dispatch({ type: LOADING_UI })
-    const response = await axios.post('http://localhost:3090/users/signup', formProps);
+    // const response = await axios.post('http://localhost:3090/users/signup', formProps);
+    const response = await axios.post('/users/signup', formProps);
     // console.log(response.data);
     setAuthorizationHeader(response.data.token);
     dispatch({ type: AUTH_USER, payload: response.data.token });
@@ -51,7 +53,8 @@ export const signup = (formProps, callback) => async dispatch => {
 
 export const signin = (formProps, callback) => async dispatch => {
   try {
-    const response = await axios.post('http://localhost:3090/users/signin', formProps);
+    // const response = await axios.post('http://localhost:3090/users/signin', formProps);
+    const response = await axios.post('/users/signin', formProps);
     setAuthorizationHeader(response.data.token);
     dispatch({ type: AUTH_USER, payload: response.data.token });
     dispatch(getUser());
@@ -66,7 +69,8 @@ export const signin = (formProps, callback) => async dispatch => {
 export const getUsers = () => async dispatch => {
   try {
     dispatch({ type: LOADING_USERS })
-    const response = await axios.get('http://localhost:3090/users');
+    // const response = await axios.get('http://localhost:3090/users');
+    const response = await axios.get('/users');
     console.log(response);
     dispatch({ type: GET_USERS, payload: response.data })
     dispatch({ type: LOADING_USERS })
