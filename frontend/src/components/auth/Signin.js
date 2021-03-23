@@ -23,7 +23,7 @@ class Signin extends Component {
     const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
-        <h3>Sign Up</h3>
+        <h3>Sign In</h3>
         {/* <div className="form-group">
           <fieldset>
             <label>Name:</label>
@@ -33,20 +33,20 @@ class Signin extends Component {
         <div className="form-group">
           <fieldset>
             <label>Email</label>
-            <Field className="form-control" name="email" type="text" component="input" autoComplete="none" required />
+            <Field className="form-control" name="email" type="text" component="input" autoComplete="none" />
           </fieldset>
           </div>
         <div className="form-group">
           <fieldset>
             <label>Password</label>
-            <Field className="form-control" name="password" type="passsword" component="input" autoComplete="none" required />
+            <Field className="form-control" name="password" type="passsword" component="input" autoComplete="none" />
           </fieldset>
         </div>
           {/* Print the Error message inside the form */}
-          <div style={{color:"red"}}>{this.props.errorMessage}</div>
+          <div style={{color:"red"}}>{this.props.errors.message}</div>
           
         <div className="form-group">
-          <button className="btn btn-primary">Sign In!</button>
+          <button className="btn btn-primary mt-3">Sign In!</button>
         </div>
       </form>
     )
@@ -54,7 +54,7 @@ class Signin extends Component {
 }
 
 function mapStateToProps (state){
-  return { errorMessage: state.auth.errorMessage };
+  return { errors: state.auth.errors };
 }
 
 // export default reduxForm({ form: 'signup'})(Signup);

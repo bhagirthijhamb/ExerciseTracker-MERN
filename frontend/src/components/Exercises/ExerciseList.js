@@ -36,7 +36,6 @@ class ExerciseList extends Component {
     
   render(){
     const { loading, exercises } = this.props.exercise;
-    console.log(loading);
 
     // if(this.props.exercise){
     //   console.log(this.props.exercise.exercises);
@@ -73,7 +72,6 @@ class ExerciseList extends Component {
 }
 
 function mapStateToProps (state){
-  console.log(state);
   return { exercise: state.exercise }
 }
 

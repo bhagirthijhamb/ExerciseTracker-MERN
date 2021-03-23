@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { set } from 'mongoose';
 import { AUTH_USER, AUTH_ERROR, LOADING_USERS, GET_USERS, LOADING_UI, SET_USER } from '../types';
 
 export const getUser = () => async dispatch => {
@@ -32,7 +33,7 @@ export const signup = (formProps, callback) => async dispatch => {
   try {
     dispatch({ type: LOADING_UI })
     const response = await axios.post('http://localhost:3090/users/signup', formProps);
-    console.log(response.data);
+    // console.log(response.data);
     setAuthorizationHeader(response.data.token);
     dispatch({ type: AUTH_USER, payload: response.data.token });
     dispatch(getUser());
@@ -51,13 +52,14 @@ export const signup = (formProps, callback) => async dispatch => {
 export const signin = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post('http://localhost:3090/users/signin', formProps);
+    setAuthorizationHeader(response.data.token);
     dispatch({ type: AUTH_USER, payload: response.data.token });
-    localStorage.setItem('ETtoken', response.data.token);
+    dispatch(getUser());
     callback()
   }
   catch (error){
     console.log(error.response.data);
-    // dispatch({ type: AUTH_ERROR, payload: 'Email in use' });
+    dispatch({ type: AUTH_ERROR, payload: { message: error.response.data } });
   }
 }
 

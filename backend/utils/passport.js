@@ -50,9 +50,10 @@ const localLogin = new localStrategy(localOptions, function(email, password, don
     // user not found (user thinks they have an account but they don't)
     if(!user){
       // no error, no user found
+      console.log('user not found');
       return done(null, false);
     }
-
+    
     // Compare passwords
     user.comparePasswords(password, function(err, isMatch){
       if(err){
@@ -60,6 +61,7 @@ const localLogin = new localStrategy(localOptions, function(email, password, don
         return done(err);
       }
       if(!isMatch){
+        console.log('email, password dont match')
         return done(null, false);
       }
       // call the passport callback with the user
