@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { getUsers } from './../../redux/actions/userActions';
 import { createExercise } from './../../redux/actions/exerciseActions';
+import requireAuth from './../auth/requireAuth';
 
 // export default class CreateExercise extends Component {
 class CreateExercise extends Component {
@@ -88,4 +89,4 @@ export default compose (
   // connect(mapStateToProps, { getUsers, createExercise }),
   connect(mapStateToProps, mapActionsToProps ),
   reduxForm({ form: 'createExercise' })
-)(CreateExercise);
+)(requireAuth(CreateExercise));

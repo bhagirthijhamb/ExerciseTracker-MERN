@@ -20,12 +20,6 @@ class Signup extends Component {
     });
   }
 
-  renderErrors = () => {
-    if(this.props.errors){
-      
-    }
-  }
-
   render(){
     const { handleSubmit } = this.props;
     return (

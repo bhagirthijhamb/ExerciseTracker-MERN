@@ -34,10 +34,10 @@ export const deleteExercise = (id) => async(dispatch) => {
 }
 
 export const createExercise = (exercise, callback) => async (dispatch) => {
-  console.log(exercise);
   try {
+    axios.defaults.headers.common['authorization'] = localStorage.getItem('ETtoken')
     const response = await axios.post('http://localhost:3090/exercises/add', exercise);
-    console.log(response.data);
+    // console.log(response.data);
     dispatch({ type: CREATE_EXERCISE, payload: response.data });
     callback();
   } catch(error){

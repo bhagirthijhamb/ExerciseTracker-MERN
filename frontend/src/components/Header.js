@@ -21,7 +21,7 @@ class Header extends Component {
             <Link className="nav-link" to='/signout'>Sign Out</Link>
           </li>
           <li>
-            <Link className="nav-link" to='/'>Welcome {this.props.user.name}{' '}!</Link>
+            <Link className="nav-link" to='/' style={{ fontSize: 18, fontWeight: 500, color: 'white' }}>Welcome {this.props.user.name}{' '}!</Link>
           </li>
         </ul>
       )

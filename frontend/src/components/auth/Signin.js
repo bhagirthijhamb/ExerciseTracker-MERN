@@ -43,7 +43,7 @@ class Signin extends Component {
           </fieldset>
         </div>
           {/* Print the Error message inside the form */}
-          <div style={{color:"red"}}>{this.props.errors.message}</div>
+          <div style={{color:"red"}}>{this.props.errors ? this.props.errors.message : null }</div>
           
         <div className="form-group">
           <button className="btn btn-primary mt-3">Sign In!</button>

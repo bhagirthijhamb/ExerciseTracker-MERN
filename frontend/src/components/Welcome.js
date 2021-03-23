@@ -3,9 +3,10 @@ import React from 'react';
 export default () => {
   return (
     <div>
-      <h2>
-        Welcome to Exercise Tracker. Sign Up or Sign In
+      <h2 className="welcomeMessage">
+        Welcome to Exercise Tracker. 
       </h2>
+      <p className="signUpOrSignIn">Sign Up or Sign In</p>
     </div>
   )
 }

@@ -51,11 +51,6 @@ exports.getUsers = async (req, res, next) => {
 
 exports.signin = async (req, res, next) => {
   try {
-    const { errors, valid } = validateSigninData(req.body);
-    if(!valid){
-      return res.status(422).json(errors);
-    }
-
     // User has already has their email and password auth'd from passport
     // We just need to give them a token
 
