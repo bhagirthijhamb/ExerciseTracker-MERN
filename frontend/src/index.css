@@ -1,8 +1,17 @@
-.welcomeMessage {
+/* .welcomeMessage {
   margin-top: 5rem;
-}
+} */
 
 .signUpOrSignIn {
   font-size: 1rem;
   font-style: italic;
+}
+
+.signout,
+.welcome {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

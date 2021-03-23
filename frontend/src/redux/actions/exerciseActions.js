@@ -16,7 +16,6 @@ export const getExercises = () => async(dispatch) => {
 export const getOneExercise = (id) => async(dispatch) => {
   try {
     const response = await axios.get('http://localhost:3090/exercises/'+id);
-    console.log(response);
     dispatch({ type: GET_ONE_EXERCISE, payload: response.data })
   } catch (error){
     console.log(error.response);
@@ -35,9 +34,7 @@ export const deleteExercise = (id) => async(dispatch) => {
 
 export const createExercise = (exercise, callback) => async (dispatch) => {
   try {
-    axios.defaults.headers.common['authorization'] = localStorage.getItem('ETtoken')
     const response = await axios.post('http://localhost:3090/exercises/add', exercise);
-    // console.log(response.data);
     dispatch({ type: CREATE_EXERCISE, payload: response.data });
     callback();
   } catch(error){
